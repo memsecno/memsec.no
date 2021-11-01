@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Initial Purpose and Goal"
+title:  "Purpose and Goal"
 date:   2021-10-15 21:24:56 +0200
 categories: jekyll update
 ---
