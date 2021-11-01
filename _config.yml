@@ -27,7 +27,7 @@ url: "https://memsec.no"
 #github_username:  memsec
 
 # Build settings
-theme: jekyll-theme-slate
+theme: minima
 #plugins:
 #  - jekyll-feed
 
