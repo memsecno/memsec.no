@@ -1,3 +1,3 @@
-layout: page
-title: "memsec"
-permalink: /index/
+#layout: page
+#title: "memsec"
+#permalink: /index/
