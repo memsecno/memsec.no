@@ -28,10 +28,12 @@ url: "https://memsec.no"
 
 # Build settings
 theme: minima
+remote_theme: jekyll/minima
 
 minima:
   skin: dark
 #plugins:
+#  -jekyll-remote-theme
 #  - jekyll-feed
 
 # Exclude from processing.
