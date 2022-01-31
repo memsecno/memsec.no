@@ -19,3 +19,5 @@ Content may include;
 
 
 All writings and content is meant for learning and educational purposes only.
+![](/images/computer.jpg)
+*unsplash.com/@lorenzoherrera*
