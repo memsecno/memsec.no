@@ -1,8 +1,9 @@
 ---
-layout: post
-title:  "memsec"
-date:   2022-01-25 21:24:56 +0200
-categories: post
+layout: default
+title: Home
+permalink: /home/
+redirect_from:
+  - /
 ---
 
 We are two Scandinavian security enthusiasts with backgrounds in security and software development, aiming to produce content related to research and assessment activities to further advance our knowledge and craft within the security realm. 

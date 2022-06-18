@@ -5,4 +5,4 @@ permalink: /contact/
 ---
 
 
-Inquiries by [mail](mailto:post@memsecsystems.com)
+Inquiries: [post@memsecsystems.com](mailto:post@memsecsystems.com)
