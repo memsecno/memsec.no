@@ -18,20 +18,19 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: memsec | systems security
 email: post@memsecsystems.com
+github_username:  memsec
+title: memsec | systems security
 description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://memsecsystems.com"
-#twitter_username: memsec
-#github_username:  memsec
 
 # Build settings
 theme: minima
 remote_theme: jekyll/minima
 
 minima:
-  skin: dark
+  # skin: dark
 #plugins:
 #  -jekyll-remote-theme
 #  - jekyll-feed
