@@ -7,7 +7,6 @@ tags: ["blockchain", "security testing", "fuzzing"]
 This an introduction post in a series of blog posts related to blockchain security.
 
 ## What is Blockchain?
-
 A blockchain is a distributed database or ledger that allows users and organizations to store and process data with the structured distributed blocks present in a blockchain network. Each new block stores a transaction or a bundle of transactions that is connected to all the previously available blocks in the form of a cryptographic chain. Blockchains are best known for their crucial role in cryptocurrency systems, such as Bitcoin, for maintaining a secure and decentralized record of transactions. The innovation with a blockchain is that it guarantees the fidelity and security of a record of data and generates trust without the need for a trusted third party [1].
 
 ## What is Solidity?
