@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "memsec"
+title:  "Introduction"
 date:   2022-01-25 21:24:56 +0200
+author: "Bjørn-Ivar Bekkevold, Sirajuddin Asjad"
 categories: post
 ---
 
@@ -18,5 +19,3 @@ Content may include;
 
 
 All writings and content is meant for learning and educational purposes only.
-![](/images/computer.jpg)
-*unsplash.com/@lorenzoherrera*

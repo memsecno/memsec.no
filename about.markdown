@@ -19,5 +19,9 @@ Content includes:
 
 All writings and content is meant for learning and educational purposes only.
 
-![](/images/computer.jpg)
-*unsplash.com/@lorenzoherrera*
+|Bjørn-Ivar Bekkevold | Sirajuddin Asjad|
+|:-:|:-:|
+|![Bjørn-Ivar](/images/bjornivar_bw.jpg) | ![Sirajuddin](/images/sira_bw.jpeg)|
+|[mail](mailto:bjornivar95@gmail.com) [linkedin](https://no.linkedin.com/in/bj%C3%B8rn-ivar-bekkevold-1a18901aa)|[mail](sirasjad@gmail.com) [linkedIn](https://no.linkedin.com/in/sirasjad)|
+
+
