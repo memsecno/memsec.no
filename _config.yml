@@ -18,12 +18,12 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-email: post@memsecsystems.com
+email: post@memsec.no
 github_username:  memsec
 title: memsec | systems security
 description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://memsecsystems.com"
+url: "https://memsec.no"
 
 # Build settings
 theme: minima
