@@ -4,13 +4,11 @@ layout: default
 <header>
   {% if site.theme_config.show_navbar == true %}
     {% include horizontal_list.html collection=site.data.home.navbar_entries %}
-
-    | Twitter &nbsp;&nbsp; GitHub
     <div class="dashed"></div>
   {% endif %}
   
   <!--<h1>{{ site.title }}</h1>-->
-  <h1>Blog articles</h1>
+  <h1>Blog posts</h1>
 </header>
 
 {% include post_list.html %}
