@@ -2,12 +2,13 @@
   {% for item in include.collection %}
     <li>
       <a href="{{ item.url }}">
-        {{ item.title }}
+        <strong>{{ item.title }}</strong>
       </a>
       &nbsp;&nbsp;
     </li>
   {% endfor %}
 
+    |
     <li>
       <a href="#">
         Twitter
@@ -19,6 +20,5 @@
       <a href="#">
         GitHub
       </a>
-      &nbsp;&nbsp;
     </li>
 </ul>
