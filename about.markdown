@@ -21,7 +21,7 @@ All writings and content is meant for learning and educational purposes only.
 
 |Bjørn-Ivar Bekkevold | Sirajuddin Asjad | Martin S. Brunæs |
 |:-:|:-:|:-:|
-|<img src="/images/bjornivar_bw.jpg" alt= “” width="200" height="200"> | <img src="/images/sira_bw.jpeg" alt= “” width="200" height="200">|<img src="/images/profil_martin_bw.JPG" alt= “” width="200" height="200">|
+|<img src="/images/bjornivar_bw.jpg" alt= “” width="200" height="200"> | <img src="/images/sira_bw.jpeg" alt= “” width="200" height="200">|<img src="/images/profil_martin_bw1.JPG" alt= “” width="200" height="200">|
 |[mail](mailto:bjornivar95@gmail.com) [linkedin](https://no.linkedin.com/in/bj%C3%B8rn-ivar-bekkevold-1a18901aa)|[mail](sirasjad@gmail.com) [linkedIn](https://no.linkedin.com/in/sirasjad)|[mail](martin.brunaes@gmail.com) [linkedIn](https://www.linkedin.com/in/martin-brunaes/)|
 
 
