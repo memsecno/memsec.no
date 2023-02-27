@@ -1,8 +1,11 @@
 navbar_entries:
-  - title: about
+  - title: Home
+    url: home
+
+  - title: About
     url: about
 
-  - title: blog
+  - title: Blog
     url: blog
 
   #- title: website
@@ -53,15 +56,15 @@ navbar_entries:
 #    url: https://www.humangous.co
 #    desc: The better people know you, the better they collaborate
 
-#footer_entries:
+footer_entries:
   #- title: abhinav's homepage
     #url: https://www.abhinav.co
 
-  #- title: twitter
-    #url: https://twitter.com/abhinav
+  - title: twitter
+    url: https://github.com/memsecno
 
-  #- title: github
-    #url: https://github.com/abhinavs
+  - title: github
+    url: https://github.com/memsecno
 
   #- title: feed
     #url: feed.xml
