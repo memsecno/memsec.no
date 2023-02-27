@@ -1,7 +1,7 @@
 ---
 title: "Hello world"
 author: "Bjørn-Ivar Bekkevold, Sirajuddin Asjad"
-date: "2022-07-01"
+date: "2022-01-25"
 layout: post
 categories: post
 ---
