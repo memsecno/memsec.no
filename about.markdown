@@ -6,7 +6,7 @@ permalink: /about/
 ---
 ## About
 
-Two Scandinavian security enthusiasts with backgrounds in security and software development, aiming to produce content related to research and assessment activities to further advance our knowledge and craft within the security realm. 
+Three Scandinavian security enthusiasts with backgrounds in security and software development, aiming to produce content related to research and assessment activities to further advance our knowledge and craft within the security realm. 
 
 To better understand the impact exposed security vulnerabilities can have on operational systems and organizations, we believe that writing about our findings is the optimal way to learn the subject in depth. 
 
@@ -19,9 +19,9 @@ Content includes:
 
 All writings and content is meant for learning and educational purposes only.
 
-|Bjørn-Ivar Bekkevold | Sirajuddin Asjad|
-|:-:|:-:|
-|![Bjørn-Ivar](/images/bjornivar_bw.jpg) | ![Sirajuddin](/images/sira_bw.jpeg)|
-|[mail](mailto:bjornivar95@gmail.com) [linkedin](https://no.linkedin.com/in/bj%C3%B8rn-ivar-bekkevold-1a18901aa)|[mail](sirasjad@gmail.com) [linkedIn](https://no.linkedin.com/in/sirasjad)|
+|Bjørn-Ivar Bekkevold | Sirajuddin Asjad| Martin S. Brunæs |
+|:-:|:-:|:-:|
+|![Bjørn-Ivar](/images/bjornivar_bw.jpg) | ![Sirajuddin](/images/sira_bw.jpeg)| ![Martin](/images/profil_martin_bw.JPG)|
+|[mail](mailto:bjornivar95@gmail.com) [linkedin](https://no.linkedin.com/in/bj%C3%B8rn-ivar-bekkevold-1a18901aa)|[mail](sirasjad@gmail.com) [linkedIn](https://no.linkedin.com/in/sirasjad)|[mail](martin.brunaes@gmail.com) [linkedIn](https://www.linkedin.com/in/martin-brunaes/)|
 
 
