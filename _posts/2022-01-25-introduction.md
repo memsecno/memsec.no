@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introduction"
-date: 2022-01-25 21:24:56 +0200
+date: "2022-07-01"
 author: "Bjørn-Ivar Bekkevold, Sirajuddin Asjad"
 categories: post
 ---
