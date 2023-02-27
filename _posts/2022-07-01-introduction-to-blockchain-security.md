@@ -1,8 +1,10 @@
 ---
 title: "Introduction to Blockchain Security"
-date: "2022-07-01"
 author: "Sirajuddin Asjad"
+date: "2022-07-01"
 tags: ["blockchain", "security testing", "fuzzing", "smart contracts"]
+layout: post
+categories: post
 ---
 
 This an introduction post in a series of blog posts related to blockchain security. The security aspect of blockchain technology is huge and I have no intention of covering it all. I will focus on security vulnerabilities related to smart contracts and experiment with some security exploitation methods to make the most of these vulnerabilities. 

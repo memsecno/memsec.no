@@ -1,8 +1,8 @@
 ---
-layout: post
-title: "Introduction"
-date: "2022-07-01"
+title: "Hello world"
 author: "Bjørn-Ivar Bekkevold, Sirajuddin Asjad"
+date: "2022-07-01"
+layout: post
 categories: post
 ---
 
