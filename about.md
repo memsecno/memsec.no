@@ -1,6 +1,6 @@
 ---
 layout: post
-title: About
+title: About us
 ---
 
 This is an example page!
