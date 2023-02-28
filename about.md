@@ -18,5 +18,5 @@ All writings and content is meant for learning and educational purposes only.
 
 | Bjørn-Ivar Bekkevold | Sirajuddin Asjad |
 |:-:|:-:|
-| <img src="./images/bjornivar.jpeg" width="200" height="200"> | <img src="./images/sira.jpeg" width="200" height="200"> |
+| ![](./images/bjornivar.jpeg) | ![](./images/sira.jpeg) |
 |[mail](mailto:bjornivar95@gmail.com) [linkedin](https://no.linkedin.com/in/bj%C3%B8rn-ivar-bekkevold-1a18901aa)|[mail](sirasjad@gmail.com) [linkedIn](https://no.linkedin.com/in/sirasjad)|
