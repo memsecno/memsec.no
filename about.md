@@ -15,9 +15,3 @@ Content includes:
  - System Assessments
 
 All writings and content is meant for learning and educational purposes only.
-
-
-
-Bjørn-Ivar            |  Sirajuddin
-:-------------------------:|:-------------------------:
-![](./images/bjornivar.jpeg)  |  ![](./images/sira.jpeg)
