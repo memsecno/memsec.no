@@ -4,6 +4,7 @@ title:  "Extracting the WiFi password from a Tuya smart bulb"
 date:   2023-02-28 20:18:56 +0200
 author: 'Martin S. Brunæs'
 categories: post
+
 ---
 
 ## Extracting the WiFi password from a Tuya smart bulb
