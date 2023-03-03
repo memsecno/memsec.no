@@ -15,3 +15,9 @@ Content includes:
  - System Assessments
 
 All writings and content is meant for learning and educational purposes only.
+
+Bjørn-Ivar Bekkevold        |Sirajuddin Asjad| Martin Svalstuen Brunæs|
+:-------------------------:|:-------------------------:|:-------------------------:|
+   |  ![](./images/bjornivar.jpeg) | ![](./images/sira.jpeg) | <img src ="./images/martin.jpeg" width="525" height="320">
+   
+   
