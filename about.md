@@ -17,7 +17,6 @@ Content includes:
 All writings and content is meant for learning and educational purposes only.
 
 Bjørn-Ivar Bekkevold        |Sirajuddin Asjad| Martin Svalstuen Brunæs|
-:-------------------------:|:-------------------------:|:-------------------------:|
+:-------------------------:|:-------------------------:|:-------------------------:
    |  ![](./images/bjornivar.jpeg) | ![](./images/sira.jpeg) | <img src ="./images/martin.jpeg" width="525" height="320">
-   
-   
+|[mail](mailto:bjornivar95@gmail.com) [linkedin](https://no.linkedin.com/in/bj%C3%B8rn-ivar-bekkevold-1a18901aa)|[mail](sirasjad@gmail.com) [linkedIn](https://no.linkedin.com/in/sirasjad) | [mail](mailto:martin.brunaes@gmail.com) [linkedin](https://no.linkedin.com/in/martin-brunaes)
