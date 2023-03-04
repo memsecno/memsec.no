@@ -7,8 +7,6 @@ Memsec is managed by three security enthusiasts with backgrounds in system secur
 
 Topics of interests:
  - Application Fuzzing
- - Binary Analysis and Exploitation
- - Security Theory
  - System Assessments
  - Penetration testing
  - Reverse engineering
