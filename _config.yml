@@ -2,7 +2,7 @@ title: memsec
 author: memsec
 url: https://memsec.no
 description: > # description of the site (multiple lines allowed)
-  Work in progress! Installing a new template, will move blog posts from old blog soon!
+  Welcome to Memsec. A blog about security research ranging from theoretical defenses to pratical security attacks, and everything in-between.  
 
 permalink: /:slug
 
