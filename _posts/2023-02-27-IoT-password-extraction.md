@@ -3,6 +3,7 @@ title: "Extracting the Wi-Fi password from a Tuya smart bulb"
 author: "Martin Svalstuen Brunæs"
 date: "2023-02-28"
 layout: post
+tags: ["IoT", "Reverse engineering", "Pentesting", "Hardware security"]
 categories: post
 ---
 
