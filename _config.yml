@@ -3,7 +3,7 @@ author: memsec
 url: https://memsec.no
 description: > # description of the site (multiple lines allowed)
   Welcome to Memsec. Memsec is a security research blog concerning system security, theoretical defenses, practical security attacks, and everything in-between.  
-
+![image](https://user-images.githubusercontent.com/13424965/218554533-4a145527-0ca9-4996-9829-c4096a957495.png)
 permalink: /:slug
 
 favicon: "./logo.png" # relative path to site's favicon
