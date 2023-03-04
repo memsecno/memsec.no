@@ -7,8 +7,6 @@ tags: ["IoT", "Reverse engineering", "Pentesting", "Hardware security"]
 categories: post
 ---
 
-## Extracting the Wi-Fi password from a Tuya smart bulb
-
 ### Introduction
 About a year ago I purchased 10 LED smart bulbs that were generically branded for 10$ a piece. I wanted to check out the hype revolving smart home applications, but I was not interested in paying almost 4 times the amount for the popular Phillips Hue bulbs. However, I being a security enthusiast, I knew that a high focus on price and schedule tends to impact the quality attributes of the system, including security. I tried out the bulbs for several months and my impression was that they worked, but they did not provide a high quality feel in terms of app-responsiveness. Two of the bulbs also stopped working way before the claimed 30 000 hours lifetime. This gave some hope of finding low hanging security fruits.  
 
