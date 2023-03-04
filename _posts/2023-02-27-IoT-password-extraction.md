@@ -1,15 +1,15 @@
 ---
-title: "Extracting the WiFi password from a Tuya smart bulb"
+title: "Extracting the Wi-Fi password from a Tuya smart bulb"
 author: "Martin Svalstuen Brunæs"
 date: "2023-02-28"
 layout: post
 categories: post
 ---
 
-## Extracting the WiFi password from a Tuya smart bulb
+## Extracting the Wi-Fi password from a Tuya smart bulb
 
 ### Introduction
-About a year ago I purchased 10 LED smart bulbs that were generically branded for 10$ a piece. I wanted to check out the hype revolving smart home applications, but I was not interested in paying almost 4 times the amount for the popular Phillips Hue bulbs. However, I being a security enthusiast, I knew that a high focus on price and schedule tends to impact the quality attributes of the system, including security. I tried out the bulbs for several months and my impression was that they worked, but they did not provide a high quality feel in terms of app responsiveness. Two of the bulbs also stopped working way before the claimed 30 000 hours lifetime, which gave some hope of finding low hanging security fruits.  
+About a year ago I purchased 10 LED smart bulbs that were generically branded for 10$ a piece. I wanted to check out the hype revolving smart home applications, but I was not interested in paying almost 4 times the amount for the popular Phillips Hue bulbs. However, I being a security enthusiast, I knew that a high focus on price and schedule tends to impact the quality attributes of the system, including security. I tried out the bulbs for several months and my impression was that they worked, but they did not provide a high quality feel in terms of app-responsiveness. Two of the bulbs also stopped working way before the claimed 30 000 hours lifetime. This gave some hope of finding low hanging security fruits.  
 
 
 ### User Installation Process
@@ -48,7 +48,7 @@ The electrical system comprises two PCBs. One is driving the LED lights and the 
 
 Since we know that SoC's don't run at 230V directly, the board must contain circuitry to step down the voltage to the usual range of 2,7V - 6V. The through-hole components and transformers are related to this functionality. Obviously, the silver module board draws our attention and is the prime suspect of containing the flash memory that we are after. I wanted to check if I was still able to see the device in the app to check if it was still functioning, so I attached 3.3V to the input pins, and confirmed that it still worked. To be able to identify the module, I desoldered it from the PCB. When inspecting the backside of the module, it showed the silkprint.
 
-After doing some OSINT, I suspected that this hardware module is probably the WB3S module developed by Tuya based on the formfactor and pinout. Ref:(https://developer.tuya.com/en/docs/iot/wb3s-module-datasheet?id=K9dx20n6hz5n4). The datasheet of the WB3S reads that it contains a 2MB flash onboard, and I did not find any other flash ICs on the PCB upon inspection.
+After doing some OSINT, I suspected that this hardware module is probably the WB3S module developed by Tuya based on the formfactor and pinout [1]. The datasheet of the WB3S reads that it contains a 2MB flash onboard, and I did not find any other flash ICs on the PCB upon inspection.
 
 ![image](https://user-images.githubusercontent.com/13424965/218527002-c550c8f8-f4bd-4247-bacf-087ee8f981c2.png)
 
@@ -258,7 +258,7 @@ bk_rst:0 tuya_rst:0[01-01 01:00:11 TUYA Notice][tuya_tls.c:554] ret = 0
 ```
 The log shows the SDK version to be BK7231S_1.0.5 and it shows the SSID of the home network. There is also meta data about how way it works such as messaging protocols, boot order, and configuration info. 
 
-When I researched how to read the memory of the BK7231T I found an open-source firmware flashing tool called OpenBeken (https://github.com/openshwprojects/OpenBK7231T_App). OpenBeken handles the interfacing for the device and only a USB UART bridge (I used Bus Pirate 3.6) is needed. The memory is read of the WB3S 1TX and 1RX pins. 
+When I researched how to read the memory of the BK7231T I found an open-source firmware flashing tool called OpenBeken [2]. OpenBeken handles the interfacing for the device and only a USB UART bridge (I used Bus Pirate 3.6) is needed. The memory is read of the WB3S 1TX and 1RX pins. 
 
 ![image](https://user-images.githubusercontent.com/13424965/221281801-594f4a45-1ff1-491e-8ebe-1e9beed0a800.png)
 
@@ -269,3 +269,7 @@ The memory dump results in a text file. By searching for SSID in a simple text e
 ## Conclusion
 
 Tuya smart bulbs are IoT devices that are functionally decent and cheap. However, like many IoT devices, security is not always a sufficient priority to mitigate all types of attacks (such as physical access attacks). The blog post looks into a physical access attack where the Wi-Fi password of the associated network is exposed due to being stored unencrypted in the flash memory. Adversaries may use this attack to gain a foothold in the target's Wi-Fi network that can be used for other attacks.
+
+### References
+[1] https://developer.tuya.com/en/docs/iot/wb3s-module-datasheet?id=K9dx20n6hz5n4 \
+[2] https://github.com/openshwprojects/OpenBK7231T_App
