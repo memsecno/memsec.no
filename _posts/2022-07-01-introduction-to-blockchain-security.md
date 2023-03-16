@@ -11,7 +11,7 @@ This an introduction post in a series of blog posts related to blockchain securi
 
 # Introduction
 ## What is Blockchain?
-A blockchain is a distributed database or ledger that allows users and organizations to store and process data with the structured distributed blocks present in a blockchain network. Each new block stores a transaction or a bundle of transactions that is connected to all the previously available blocks in the form of a cryptographic chain. Blockchains are best known for their crucial role in cryptocurrency systems, such as Bitcoin, for maintaining a secure and decentralized record of transactions. The innovation with a blockchain is that it guarantees the fidelity and security of a record of data and generates trust without the need for a trusted third party [1].
+A blockchain is a distributed database or ledger that allows users and organizations to store and process data with the structured distributed blocks present in a blockchain network. Each new block stores a transaction or a bundle of transactions that is connected to all the previously available blocks in the form of a cryptographic chain. Blockchains are best known for their crucial role in cryptocurrency systems, such as Bitcoin, for maintaining a secure and decentralized record of transactions. The innovation with a blockchain is that it guarantees the fidelity and security of a record of data and generates trust without the need for a trusted third party.
 
 ![blockchain](https://unova.io/wp-content/uploads/2021/11/blockchainnetworkunova-2048x1740.png)
 
@@ -19,7 +19,7 @@ A blockchain is a distributed database or ledger that allows users and organizat
 Smart contracts are self-executing contracts that contain the terms and conditions of a legal agreement between two or more parties. They are written in computer code and stored on a blockchain, which enables them to automatically execute and enforce the terms of the agreement. As a result of this automation, all participants can be immediately certain of the outcome without any intermediary’s involvement or time loss. One of the key benefits of smart contracts is that they are transparent, secure, and tamper-proof. Once a smart contract is deployed on the blockchain, it cannot be altered or deleted and its execution is guaranteed as long as the conditions are met. Smart contracts do not contain legal language, terms or agreements - only code that executes actions when specified conditions are met. 
 
 ## What is Solidity?
-Solidity is an object-oriented, high-level programming language used to create smart contracts that automate transactions on the blockchain. After being proposed in 2014, the language was developed by contributors to the Ethereum project. The language is primarily used to create smart contracts on the Ethereum blockchain and create smart contracts on other blockchains [2].
+Solidity is an object-oriented, high-level programming language used to create smart contracts that automate transactions on the blockchain. After being proposed in 2014, the language was developed by contributors to the Ethereum project. The language is primarily used to create smart contracts on the Ethereum blockchain and create smart contracts on other blockchains.
 
 ## What is Blockchain Security? 
 Blockchain security refers to the protection of blockchain-based systems against unauthorized access, modification or destruction of data. Since blockchains are decentralized, there is no central authority in control of the network. Instead, the network is made up of nodes, each of which stores a copy of the Blockchain. In order for a hacker to tamper with the blockchain network, they would in principle need to hack every single node in the network, which is an extremely difficult feat. 
@@ -90,7 +90,6 @@ contract FuzzMemsecBlog is MemsecBlog
 This was a short introduction to Blockchain Security and some security testing techniques. In the next blog post I will go more in detail about reverse engineering smart contracts and how it can be exploited. 
 
 ## References
-[1] IBM (accessed 26 June 2022). ["What is blockchain technology?"](https://www.ibm.com/topics/what-is-blockchain) <br>
-[2] MUO (accessed 26 June 2022). ["What Is Solidity and How Is It Used to Develop Smart Contracts?"](https://www.makeuseof.com/what-is-solidity/)
-
+[1] https://www.ibm.com/topics/what-is-blockchain <br>
+[2] https://www.makeuseof.com/what-is-solidity <br>
 [3] https://unova.io/wp-content/uploads/2021/11/blockchainnetworkunova-2048x1740.png 
