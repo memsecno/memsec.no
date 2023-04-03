@@ -3,16 +3,19 @@ layout: post
 title: About us
 ---
 
-memsec is run by three security enthusiasts with backgrounds in security, software development, and electronics aiming to increase our knowledge by sharing with other security enthusiasts. We believe that researching security topics and writing about the experience is the optimal way to learn a topic in-depth, while it also contributes to the InfoSec community. If you want to be a part of the blog or discuss any releated topics, please feel free to get in touch. 
+memsec is managed by three security enthusiasts with backgrounds in cyber security, software engineering and electronics - aiming to produce content related to research and assessment activities to further advance our knowledge and craft within the security realm, in addition to sharing our experiences with other security enthusiasts. We believe that researching security-related topics and writing about the experience is the optimal way to learn a topic in-depth, while it also contributes to the cyber security community. Please feel free to get in touch if you want to be a part of the blog or discuss any related topics. 
 
-Topics of interests:
- - Application Fuzzing
- - System Assessments
- - Penetration testing
- - Reverse engineering
+Topics of interest:
+- Blockchain security
+- IoT and hardware security
+- Software and application fuzzing
+- System assessments
+- Reverse engineering
+- Ethical hacking and penetration testing
 
 All posts are for learning and educational purposes only.
 
+## The team
 | Bjørn-Ivar Bekkevold | Sirajuddin Asjad | Martin Svalstuen Brunæs |
 | :-: | :-: | :-: |
 | ![](images/bjornivar.jpeg) | ![](images/sira.jpeg) | ![](images/martin.jpeg) |
