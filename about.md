@@ -16,3 +16,8 @@ All posts are for learning and educational purposes only.
 | Bjørn-Ivar Bekkevold | Sirajuddin Asjad | Martin Svalstuen Brunæs |
 | -------------------- | ---------------- | ----------------------- |
 | Test | Test | Test |
+
+
+| <div style="width:290px">property</div> | description                           |
+| --------------------------------------- | ------------------------------------- |
+| `border-bottom-right-radius`            | Defines the shape of the bottom-right |
