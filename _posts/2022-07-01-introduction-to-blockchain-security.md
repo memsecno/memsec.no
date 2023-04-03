@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Blockchain Security"
 author: "Sirajuddin Asjad"
-date: "2022-07-01"
+date: "2023-02-06"
 tags: ["blockchain", "security testing", "fuzzing", "smart contracts"]
 layout: post
 categories: post
