@@ -16,4 +16,4 @@ All posts are for learning and educational purposes only.
 | Bjørn-Ivar Bekkevold | Sirajuddin Asjad | Martin Svalstuen Brunæs |
 | :-: | :-: | :-: |
 | ![](https://ionicframework.com/docs/img/demos/avatar.svg) | ![](https://ionicframework.com/docs/img/demos/avatar.svg) | ![](https://ionicframework.com/docs/img/demos/avatar.svg) |
-| <a href="bjorn@memsec.no" target="_blank"><i class="fa-solid fa-envelope"></i></a> <a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a> | [linkedIn](https://no.linkedin.com/in/sirasjad) | Test |
+| <a href="mailto:bjorn@memsec.no" target="_blank"><i class="fa-solid fa-envelope fa-xl"></i></a> &nbsp; <a href="" target="_blank"><i class="fa-brands fa-linkedin fa-xl"></i></a> &nbsp; <a href="" target="_blank"><i class="fa-brands fa-square-github fa-xl"></i></a> &nbsp; <a href="" target="_blank"><i class="fa-brands fa-square-twitter fa-xl"></i></a> | [linkedIn](https://no.linkedin.com/in/sirasjad) | Test |
