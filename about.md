@@ -14,6 +14,6 @@ Topics of interests:
 All posts are for learning and educational purposes only.
 
 | Bjørn-Ivar Bekkevold | Sirajuddin Asjad | Martin Svalstuen Brunæs |
-| -------------------- | ---------------- | ----------------------- |
+| :-: | :-: | :-: |
 | ![](https://ionicframework.com/docs/img/demos/avatar.svg) | ![](https://ionicframework.com/docs/img/demos/avatar.svg) | ![](https://ionicframework.com/docs/img/demos/avatar.svg) |
-| Test | Test | Test |
+| <i class="fa-solid fa-envelope" /> | Test | Test |
