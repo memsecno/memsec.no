@@ -13,4 +13,5 @@ Topics of interests:
 
 All posts are for learning and educational purposes only.
 
-
+| Bjørn-Ivar Bekkevold | Sirajuddin Asjad | Martin Svalstuen Brunæs |
+| :-: | :-: |
