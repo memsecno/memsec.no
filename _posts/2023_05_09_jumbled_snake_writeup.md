@@ -53,10 +53,31 @@ Xf5}IX7|0X17s+XB&N)KXn+(X,O+1qXCQ*)`X7|0]]]bZZZZt\\ EPZY SUY X@Wt{>XXYUSXXZD\ZeU
 ```
 
 ### Introduction
-First, we should try to understand what the provided jumble.py script does. After looking and running the code we see that print_flag.py needs to exist in the same directory as jumble.py, which the CTF author kindly tells us
+First, we should try to understand what the provided jumble.py script does. After looking and running the code we see that print_flag.py needs to exist in the same directory as jumble.py, which the CTF author kindly tells us:
 > "# Need print_flag.py (secret) in the same directory as this file"
-Now, I will not go through each part of the code individually, but based on code analyzes we determine the following:
-1. get_rand_key function 
-2. Second item
-3. Third item
-4. Fourth item
+
+Now, I will not go through each part of the code individually, but based on code analyzes we can determine the following:
+
+1. def get_rand_key returns a random key in a dictonary form with following charset:
+```0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+, -./:;<=>?@[\]^_`{|}~ ```
+What basically happens is that we feed secrets.choice() with our charset and the function returns one input character randomly. We build the key dictorary up this way, so we end up with 
+``` key = {'0': 'Unique random character from charset', '1': 'Unique random character from charset', '2': 'Unique random character from charset', '3': 'Unique random character from charset'}... ```
+3. def subs() takes the plaintext and the random key as an input and performs a substition of plaintext resulting in a cipher text. 
+4. We now understand how print_flag.py.enc was created in the first place.  
+
+At this point we know that we are dealing with a substitution cipher and we know that we have the encrypted output. jumble.py also gives us a valueble clue that helps us solve the puzzle:
+```python
+doc = print_flag.decode_flag.__doc__
+    assert doc is not None and '\n' not in doc
+    dst.write(doc + '\n')
+```
+Based on the code above we can deduce that the original print_flag.py must have included a function called decode_flag with a docstring. Subsequently, we see that the docstring is written to the first line of our output file, print_flag.py.enc. Let's take a look at the first line:
+> {'the_quick_brown_fox_jumps_over_the_lazy_dog': 123456789.0, 'items':[]}
+This results in the following print_flag.py:
+``` python
+def decode_flag():
+    """{'the_quick_brown_fox_jumps_over_the_lazy_dog': 123456789.0, 'items':[]}"""
+```    
+A quick Google Search reveals the following citation on Wikipedia ""The quick brown fox jumps over the lazy dog" is an English-language pangram — a sentence that contains all the letters of the alphabet."
+Isn't that just great? We have determined that we are dealing with a substituion cipher, and we have been provided with pangram that was in the original plaintext, and we have the resulting ciphertext. We see that the pangram stars with 
+
