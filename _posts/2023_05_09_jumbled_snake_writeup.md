@@ -79,5 +79,34 @@ def decode_flag():
     """{'the_quick_brown_fox_jumps_over_the_lazy_dog': 123456789.0, 'items':[]}"""
 ```    
 A quick Google Search reveals the following citation on Wikipedia ""The quick brown fox jumps over the lazy dog" is an English-language pangram — a sentence that contains all the letters of the alphabet."
-Isn't that just great? We have determined that we are dealing with a substituion cipher, and we have been provided with pangram that was in the original plaintext, and we have the resulting ciphertext. We see that the pangram stars with 
+Isn't that just great? We have determined that we are dealing with a substituion cipher, and we have been provided with pangram that was in the original plaintext, and we have the resulting ciphertext. If we determine where the pangram appears in the ciphertext we can make a substitution table and use it on the entire ciphertext to get the plaintext. We see that before the pangram appears we observe triple quotes ("). We can write a python script that looks for all strings that start and end with three equal characters with a total length of 78:
+```python
+import os
+
+cipher = [] #Store the cipher once we found it
+length = len("\"\"\"{'the_quick_brown_fox_jumps_over_the_lazy_dog': 123456789.0, 'items':[]}\"\"\"") #Length of the search-string.
+
+with open(os.path.join(os.path.dirname(__file__), 'print_flag.py.enc')) as enc: #Open ciphertext file
+    input = enc.read()
+
+    for i in range(len(input)):
+        if input[i] == input[i-1] and input[i] == input[i-2]:
+            #If the current character equals the two previous.
+            try:
+                if input[i + length-3] == input[i] and input[i+length-4] == input[i] and input[i+length-5] == input[i]:
+                    #If the same three characters appears at the end of the string
+                    print("Found the matching pangram!")
+                    for j in range(i-2, i+length-2, 1): #Append each character to an chipher array
+                        cipher.append(input[j])
+            except:
+                break
+
+cipherstring = ''.join(cipher) #Concatenate for readability
+print(cipherstring)
+```
+Output:
+```
+Found the matching pangram!
+]]]y8Pp X	%DSlXGEUeX@U$Xz%Mo\XUa EXPp XWtkXYU{8/ZRm:whA~_3>6'Z8DP M\8/j?V]]]
+```
 
