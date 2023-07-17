@@ -8,7 +8,7 @@ categories: post
 ---
 
 ## San Diego CTF - Jumbled Snake Write Up
-I attended the San Diego Capture The Flag (SDCTF) 2023, a jeopardy style CTF from May 6-8. In this blog post we will take a look at one of the crypto challenges in this CTF, namely, "jumbled snake". It was great fun and a great learning experience!
+I attended the San Diego Capture The Flag (SDCTF) 2023, a jeopardy style CTF from May 6-8. In this blog post we will take a look at one of the crypto challenges in this CTF, namely, "jumbled snake". It was fun and a great learning experience!
 
 ### Challenge Text
 ![Screenshot from 2023-05-09 19-24-45](https://github.com/memsecno/memsec.no/assets/13424965/beed623f-d59c-40ab-aac4-b6fef10c9b71)
@@ -144,7 +144,7 @@ with open(os.path.join(os.path.dirname(__file__), 'input.enc')) as enc, open('pr
     dec.write(subs(enc.read(), key))
 
 ```
-### Deducing unknown keyvalue-pairs based on semi-decoded output
+### Deducing unknown key-value pairs based on semi-decoded output
 The resulting prototypedecoded.dec shows the following:
 ```
 5z usrbinenv python3!import base64!!coded_flag s "c2ajdO"7PP91bl/hdjns"'afdygz^3nuE2shf9ss"!!def reverse.s[:!    return "".join.reversed.s[[!!def check.[:!    """O~C_r"#1_y
@@ -154,7 +154,7 @@ _ayP~_iuE8/_^~]_n'~aL_gJ	89_y
 """!    assert decode_flag.__doc__ is not none and decode_flag.__doc__.upper.[[2:45] ss reverse.check.__doc__[!!def decode_flag.code[:!    """{'the_quick_brown_fox_jumps_over_the_lazy_dog': 123456789.0, 'items':[]}"""!    return base64.b64decode.code[.decode.[!!if __name__ ss "__main__":!    check.[!    print.decode_flag.coded_flag[[!
 ```
 
-We see that parts of the chiphertext is successfully converted to plaintext, but that our key is not complete. We can fill in the blanks by looking at common used characters such as "space", "lineshift", etc. to deduce the missing key value pairs for substitution. I.e. by  updating keyvalue-pair from 'b':'!' to 'b':'\n' increases the readability by adding line shift. Doing the same for '()', 'N', and '=' gives the following output, that offers better readability:
+We see that parts of the chiphertext is successfully converted to plaintext, but that our key is not complete. We can fill in the blanks by looking at common used characters such as "space", "lineshift", etc. to deduce the missing key value pairs for substitution. I.e. by  updating key-value pair from 'b':'!' to 'b':'\n' increases the readability by adding line shift. Doing the same for '()', 'N', and '=' gives the following output, that offers better readability:
 
 ```
 5z usrbinenv python3
@@ -196,7 +196,7 @@ def check():
 
 The last crucial stage is to make sure that the coded_flag is propely decoded. Up until now our key only contains a lower case pangram, but now that we know that check() contains the same pangram with capital letters, this should be added to our key. This is done in the same way as the first pangram (see code in bottom of post). 
 
-Now, the prototypedecoded.dec looks to be completely decoded:
+Now, the prototypedecoded.dec looks to be completely decoded. Let's test it!
 
 ```python
 import base64
@@ -219,8 +219,8 @@ if __name__ == "__main__":
     print(decode_flag(coded_flag))
 
 ```
-# Flag
-By running this script we obtain the flag!
+
+By running this script we obtain the #### flag!
 Script Output:
 ```
 sdctf{U_unRav3led_tH3_sn3k!}
