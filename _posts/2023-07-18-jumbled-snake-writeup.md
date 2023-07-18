@@ -78,7 +78,9 @@ doc = print_flag.decode_flag.__doc__
     dst.write(doc + '\n')
 ```
 Based on the code above we can deduce that the original print_flag.py must have included a function called decode_flag with a docstring. Subsequently, we see that the docstring is written to the first line of our output file, print_flag.py.enc. Let's take a look at the first line:
-> {'the_quick_brown_fox_jumps_over_the_lazy_dog': 123456789.0, 'items':[]}
+```
+{'the_quick_brown_fox_jumps_over_the_lazy_dog': 123456789.0, 'items':[]}
+```
 This results in the following print_flag.py:
 ``` python
 def decode_flag():
