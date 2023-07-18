@@ -7,7 +7,7 @@ layout: post
 categories: post
 ---
 
-## San Diego CTF - Jumbled Snake Write Up
+## San Diego CTF - Jumbled Snake Write Up 
 
 ![image](https://github.com/memsecno/memsec.no/assets/13424965/7ed57909-b302-4100-93db-47646591f188)
 
