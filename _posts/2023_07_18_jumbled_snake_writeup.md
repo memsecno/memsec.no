@@ -1,7 +1,7 @@
 ---
 title: "Crypto: Can you unravel the jumbled snake?"
 author: "Martin Svalstuen Brunæs"
-date: "2023-05-15"
+date: "2023-07-18"
 tags: ["CTF", "Crypto", "Python", "Substitution cipher"]
 layout: post
 categories: post
