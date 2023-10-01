@@ -62,7 +62,7 @@ A successful attack will have the capability to interfere directly with the syst
 
 For systems within the realm of OT and IoT, these sections can comprise of the controlling, monitoring or automated decision-making that supports industrial processes and critical infrastructure.
 
-```c_cpp
+```c
 safety_limit = get_safety_limit();
 temp = get_temperature();
 
