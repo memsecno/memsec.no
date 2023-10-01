@@ -41,9 +41,7 @@ By interfering with the electronic circuitry, an induced fault will manifest its
 It will then propagate up to the instruction layer, observable as a behavioral change in software.
 
 
-<p><center>
-<img src="../images/fault_injection/fault_inject_process.png"  width="700" alt="Fault Injection Process" />
-</p></center>
+![Fault Injection Process](../images/fault_injection/fault_inject_process.png)
 
 
 By understanding the characteristics of an induced fault throughout the system we can abstract an attack into logical fault models,
@@ -52,9 +50,7 @@ and evaluate its effect on the running software.
 Fault models can be viewed as  either an alteration in execution flow, for instance through the skipping of selected instructions in an instruction stream.
 Or data flow by altering the data stored in registers operated on by the system processor.
 
-<p><center>
-<img src="../images/fault_injection/instruction_skip.png"  width="700" />
-</p></center>
+![Instruction Skip](../images/fault_injection/instruction_skip.png)
 
 These fault models can then be applied by targeting selected variables and conditionals in code.
 
@@ -67,6 +63,7 @@ A successful attack will have the capability to interfere directly with the syst
 For systems within the realm of OT and IoT, these sections can comprise of the controlling, monitoring or automated decision-making that supports industrial processes and critical infrastructure.
 
 ```
+C
 safety_limit = get_safety_limit();
 temp = get_temperature();
 
@@ -78,6 +75,7 @@ while( temp < safety_limit ){
 }
 
 ```
+
 An example target sequence can be the controlling of an industrial process regarding temperature for a production facility. 
 Although simplified, the depicted code block conveys the execution of a critical part of code regarding safety limits on temperature.
 
