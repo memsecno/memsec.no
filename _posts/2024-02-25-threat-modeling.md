@@ -30,4 +30,4 @@ Threat modeling can be applied any time that is suited, but the value added is u
 
 #### Sources
 [1] https://owasp.org/www-community/Threat_Modeling \
-[2] https://learn.microsoft.com/en-us/previous-versions/commerce-server/ee823878(v=cs.20)
+
