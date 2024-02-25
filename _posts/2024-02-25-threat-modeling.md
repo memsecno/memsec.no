@@ -9,9 +9,9 @@ categories: post
 
 ### What is threat modeling?
 
-Threat modeling “works to identify, communicate, and understand threats and mitigations within the context of protecting something of value.” [1]. Threat modeling can also refer to a set of activities where key stakeholders of the system-of-interest (SOI) evaluate the SOI’s security from different perspectives. The objective of threat modeling is to identify security threats to the SOI, thereby, enabling development teams or manufacturers  to implement controls to mitigate the threats. 
+Threat modeling “works to identify, communicate, and understand threats and mitigations within the context of protecting something of value.” [1]. Threat modeling can also refer to a set of activities where key stakeholders of the system-of-interest (SOI) evaluate the SOI’s security from different perspectives. The objective of threat modeling is to identify security threats to the SOI, thereby, enabling development teams or manufacturers to implement controls to mitigate the threats. 
 
-Threat modeling can be done using a variety of different ways. Each methodology can have different way to identify and categorize threats to the SOI. Once threats have been identified and the consequence categorized (e.g., CIA triad), the results can be documented and handled through risk management. Subsequently, the threats can be mitigated, accepted, or deferred based on a risk-based evaluation. 
+Threat modeling can be done using a variety of different threat modeling methodologies. Each methodology can have different ways to identify and categorize threats to the SOI. Once threats have been identified and the consequence categorized (e.g., CIA triad), the results can be documented and handled through risk management. Subsequently, the threats can be mitigated, accepted, or deferred based on a risk-based evaluation. 
 
 A key part of threat modeling is to identify the threats, which is usually governed by the threat modeling methodology. In my experience, simply put, visual illustrations plays a vital part to communicate how a system is structured (it’s architecture) and how it works (the system behavior). Any illustration that manages to communicate these two things are suitable as input to a threat modeling process, in my opinion. To identify threats one must understand the SOI and be able to communicate that understanding with other stakeholders in order to collectively reason about the SOI’s security. This is especially true for multidisciplinary systems where threats can emerge as a result of complex integration between many disciplines. 
 
@@ -26,3 +26,8 @@ Threat modeling can also be an integrated part of company's system development p
 ### When should you perform threat modeling?
 
 Threat modeling can be applied any time that is suited, but the value added is usually greater when done early in the development stages. Threat modeling should be performed throughout the SOI’s life cycle, and it is paramount to think about security as an integrated part of the SOI’s design process. Thinking of security early on enables security considerations to influence the system architecture. The effectiveness and cost of implementing security controls tend to increase in the later stages of the development, as a result of high-level architecture being locked. However, that being said, one does not need to spend a lot of time to benefit from threat modeling. Having just a few sessions will probably allow you to identifying some low hanging fruits that when mitigated, improves the SOI’s security posture. 
+
+
+#### Sources
+[1] https://owasp.org/www-community/Threat_Modeling \
+[2] https://learn.microsoft.com/en-us/previous-versions/commerce-server/ee823878(v=cs.20)
