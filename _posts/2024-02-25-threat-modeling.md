@@ -1,7 +1,7 @@
 ---
 title: "What is threat modeling?"
 author: "Martin Svalstuen Brunæs"
-date: "2024-02-25"
+date: "2024-03-16"
 tags: ["Threat Modeling", "Security Engineering", "Security Posture"]
 layout: post
 categories: post
