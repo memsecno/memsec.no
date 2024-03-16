@@ -45,7 +45,8 @@ This attack tree (inluding logic gates) is used to structure the information of 
 |:--:|
 | <b>Data Flow Diagram of a hypothetical kernel-mode Windows Driver Model (WDM) driver [3]</b>|
 
-This Data Dlow Diagram visualizes the interactions between external entities (e.g., user and operating system) and the driver as well as showing internal behavior of the driver. This diagram can be used to identify assets to be attacked and which attack paths that can be used.
+This Data Dlow Diagram visualizes the interactions between external entities (e.g., user and operating system) and the driver as well as showing internal behavior of the driver. This diagram can be used to identify assets to be attacked (e.g., in terms of CIA triad) and how they can be attacked.
+
 
 
 #### Sources
