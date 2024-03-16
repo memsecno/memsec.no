@@ -7,6 +7,10 @@ layout: post
 categories: post
 ---
 
+
+
+
+
 ### What is threat modeling?
 
 Threat modeling “works to identify, communicate, and understand threats and mitigations within the context of protecting something of value.” [1]. Threat modeling can also refer to a set of activities where key stakeholders of the system-of-interest (SOI) evaluate the SOI’s security from different perspectives. The objective of threat modeling is to identify security threats to the SOI, thereby, enabling development teams or manufacturers to implement controls to mitigate the threats. 
@@ -28,6 +32,24 @@ Threat modeling can also be an integrated part of company's system development p
 Threat modeling can be applied any time that is suited, but the value added is usually greater when done early in the development stages. Threat modeling should be performed throughout the SOI’s life cycle, and it is paramount to think about security as an integrated part of the SOI’s design process. Thinking of security early on enables security considerations to influence the system architecture. The effectiveness and cost of implementing security controls tend to increase in the later stages of the development, as a result of high-level architecture being locked. However, that being said, one does not need to spend a lot of time to benefit from threat modeling. Having just a few sessions will probably allow you to identifying some low hanging fruits that when mitigated, improves the SOI’s security posture. 
 
 
+### Example Illustrations
+
+| ![space-1.jpg](https://github.com/memsecno/memsec.no/assets/13424965/d4033185-6761-4cf5-9e35-837d31511bd9) |
+|:--:|
+| <b>Attack tree for opening a safe [2]</b>|
+
+This attack tree (inluding logic gates) is used to structure the information of possible attacks that results in a open safe. 
+
+
+| ![space-1.jpg](https://github.com/memsecno/memsec.no/assets/13424965/374ca812-3d25-4102-9c67-34fa01147b64) |
+|:--:|
+| <b>Data Flow Diagram of a hypothetical kernel-mode Windows Driver Model (WDM) driver [3]</b>|
+
+This Data Dlow Diagram visualizes the interactions between external entities (e.g., user and operating system) and the driver as well as showing internal behavior of the driver. This diagram can be used to identify assets to be attacked and which attack paths that can be used.
+
+
 #### Sources
-[1] https://owasp.org/www-community/Threat_Modeling
+[1] https://owasp.org/www-community/Threat_Modeling \
+[2] https://calibreone.com.au/what-are-cyber-attack-trees \
+[3] https://learn.microsoft.com/en-us/windows-hardware/drivers/driversecurity/threat-modeling-for-drivers
 
