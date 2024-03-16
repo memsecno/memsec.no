@@ -29,5 +29,5 @@ Threat modeling can be applied any time that is suited, but the value added is u
 
 
 #### Sources
-[1] https://owasp.org/www-community/Threat_Modeling \
+[1] https://owasp.org/www-community/Threat_Modeling
 
