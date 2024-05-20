@@ -1,5 +1,5 @@
 ---
-title: "What is threat modeling?"
+title: "Introduction to threat modeling"
 author: "Martin Svalstuen Brunæs"
 date: "2024-03-16"
 tags: ["Threat Modeling", "Security Engineering", "Security Posture"]
@@ -7,11 +7,12 @@ layout: post
 categories: post
 ---
 
-
-
-
-
 ### What is threat modeling?
+
+| ![space-1.jpg](https://github.com/memsecno/memsec.no/assets/13424965/c15531a9-65bf-4a04-94ca-88ab5a21033e) |
+|:--:|
+| <b>This image was created with the assistance of DALL·E 2.</b>|
+
 
 Threat modeling “works to identify, communicate, and understand threats and mitigations within the context of protecting something of value.” [1]. Threat modeling can also refer to a set of activities where key stakeholders of the system-of-interest (SOI) evaluate the SOI’s security from different perspectives. The objective of threat modeling is to identify security threats to the SOI, thereby, enabling development teams or manufacturers to implement controls to mitigate the threats. 
 
