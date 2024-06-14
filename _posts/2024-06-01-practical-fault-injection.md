@@ -8,14 +8,11 @@ categories: post
 ---
 
 ### Introduction
-I have read the hardware hacking handbook [1] and it shows a practical example of fault injection. 
+I have been facinated lately with fault injection attacks, and the hardware hacking handbook [1] has been of great value to learn about fault injection. I figured I wanted to test out one of the practical examples that was showcases in the book, and so I did. 
 
-### Practical Fault Setup
-| ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/ea2cfb6a-de7c-4cd7-a5e0-e841fc029c49) |
-|:--:|
-| <b>Setup</b>|
 
-### Target: ATMEGA 328P microcontroller.
+
+### Target Setup: ATMEGA 328P microcontroller.
 The following code [1] was uploaded to the microcontroller:
 ``` cpp
 void setup() {
@@ -57,6 +54,14 @@ void loop() {
   }
 }
 ```
+
+### Practical Fault Setup
+
+Here is a picture of my set up with the BBQ lighter. The Arduino Nano is connected via USB to my laptop without any kinds of isolator. It is very important that the spark is kept away from the 328P leads or any other connections on the arduino, as this high voltage may damage both the arduino and the laptop connected. It is possible to acquire a decoupler to avoid this risk, but in my case I did not experience any trouble regarding this. 
+
+| ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/ea2cfb6a-de7c-4cd7-a5e0-e841fc029c49) |
+|:--:|
+| <b>Setup</b>|
 
 
 
