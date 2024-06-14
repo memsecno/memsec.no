@@ -10,10 +10,54 @@ categories: post
 ### Introduction
 I have read the hardware hacking handbook [1] and it shows a practical example of fault injection. 
 
-### Setup
+### Practical Fault Setup
 | ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/ea2cfb6a-de7c-4cd7-a5e0-e841fc029c49) |
 |:--:|
 | <b>Setup</b>|
+
+### Target: ATMEGA 328P microcontroller.
+The following code [1] was uploaded to the microcontroller:
+``` cpp
+void setup() {
+  // Initialize the serial communication at 9600 bits per second:
+  Serial.begin(9600);
+}
+
+// Declare a global variable to keep count of iterations
+unsigned long cnt = 0;
+// Declare a global variable to keep track of loop executions
+unsigned int loopcnt = 0;
+
+void loop() {
+  // Reset cnt to 0 at the start of each loop
+  cnt = 0;
+  // Increment the loop counter to keep track of how many times the loop has run
+  loopcnt++;
+
+  // Nested loops to increment cnt
+  for (unsigned int i = 0; i < 500; i++) {
+    for (volatile unsigned int j = 0; j < 500; j++) {
+      // Increment cnt in the innermost loop
+      cnt++;
+    }
+  }
+
+  // Print the value of cnt and loopcnt to the Serial Monitor
+  Serial.print(cnt);
+  Serial.print(" ");
+  Serial.println(loopcnt);
+
+  // Check if cnt is not equal to 250000
+  if (cnt != 250000) {
+    // If there is a discrepancy, print a glitch message
+    Serial.println("<---- GLITCH");
+  } else {
+    // If cnt equals 250000, do nothing
+    Serial.print("");
+  }
+}
+```
+
 
 
 
