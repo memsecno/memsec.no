@@ -85,9 +85,13 @@ Most of the ASCII output was from a Riscure HW hacking CTF (https://github.com/R
 |:--:|
 | <b>Strings found in the casino hex file using Ghidra</b>|
 
-This is quite interesting from a security perspective! This implies that the Arduino does not overwride all flash memory when a new program is uploaded.
+This is quite interesting from a security perspective! This implies that the Arduino does not overwride all flash memory when a new program is uploaded. I did some research on the Arduino Nano's bootloader and it seems that it uses either optiboot or ATmegaBOOT [2]. I know that mine uses ATmegaBOOT from the configuration in the IDE. Looking at the ATmegaBOOT bootloader we get our assumption verified [3]:
 
-After some research on the Arduino Uno, I found that new programs overwrite existing memory, but only based on the size of the new program. I therefore suspect that the short code snippet used in this experiemnt only replaced a small amount of the total memory. The 
+
+
+
+
+I found that new programs overwrite existing memory, but only based on the size of the new program. I therefore suspect that the short code snippet used in this experiemnt only replaced a small amount of the total memory. The 
 
 
 ### Conclusion
@@ -96,3 +100,7 @@ It is interesting and knowledgeful how easy it is to start experimenting with fa
 
 #### Sources
 [1] O'Flynn, C., & van Woudenberg, J. (2021). The hardware hacking handbook: Breaking embedded security with hardware attacks. No Starch Press.
+[2] https://arduino.stackexchange.com/questions/51866/arduino-nano-atmega328p-bootloader-difference
+[3] https://github.com/arduino/ArduinoCore-avr/blob/master/bootloaders/atmega8/ATmegaBOOT.c
+
+
