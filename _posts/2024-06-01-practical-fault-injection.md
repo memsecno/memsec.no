@@ -1,14 +1,14 @@
 ---
-title: "Fault injection caused memory dump in microcontroller!"
+title: "Electromagnetic Fault Injection in a Microcontroller"
 author: "Martin Svalstuen Brunæs"
-date: "2024-06-15"
-tags: ["fault injection", "electromagnetic", "hardware attack", "memory dump"]
+date: "2024-06-16"
+tags: ["fault injection", "electromagnetic", "hardware attack", "flash memory dump", "microcontroller"]
 layout: post
 categories: post
 ---
 
 ### Introduction
-Lately, I've been interested in fault injection attacks, and the Hardware Hacking Handbook [1] has been valuable for learning about them. I decided to try out one of the practical examples showcased in the book, and we will take a look at that experiment in this blog post. \\ The experiment is based on that a cheap BBQ ligher can be used to create a spark including electromagnetic field in near vicinity of the microcontroller such that the field interferes with the microcontroller, causing unexpected behvior such as skipping instructions. In practice, this means that we place the BBQ ligher leads on top of the ATMEGA328P SMD package and make sparks. 
+Lately, I've been interested in fault injection attacks, and the Hardware Hacking Handbook [1] has been valuable for learning about them. I decided to try out one of the practical examples showcased in the book, and we will take a look at that experiment in this blog post. The experiment is based on that a cheap BBQ ligher can be used to create a spark including electromagnetic field in near vicinity of the microcontroller such that the field interferes with the microcontroller, causing unexpected behvior such as skipping instructions. In practice, this means that we place the BBQ ligher leads on top of the ATMEGA328P SMD package and make sparks. 
 
 
 | ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/76730552-e2c5-43be-938b-621eac712c87) |
@@ -63,7 +63,7 @@ void loop() {
 
 ### Test Setup
 
-Here is a picture of my test setup, featuring the Arduino Nano mounted on a breadboard, a BBQ lighter, and alligator clips to hold the lighter's leads in place. The Arduino Nano is connected to my laptop via USB without any isolator. It is crucial to keep the spark away from the ATMEGA328P leads or any other connections on the Arduino, as the high voltage could damage both the Arduino and the connected laptop. Although a decoupler can be used to prevent this risk, I did not encounter any issues in my case.
+Here is a picture of my test setup, featuring the Arduino Nano mounted on a breadboard, a BBQ lighter, and alligator clips to hold the lighter's leads in place. The Arduino Nano is connected to my laptop via USB without any isolator. It is crucial to keep the spark away from the ATMEGA328P leads or any other connections on the Arduino, as the high voltage could damage both the Arduino and the connected laptop. Although a decoupler can be used to prevent this risk, I accepted the risk and did not encounter any issues.
 
 | ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/df73b92d-573a-4533-ad50-2f4d92800029) |
 |:--:|
@@ -71,11 +71,11 @@ Here is a picture of my test setup, featuring the Arduino Nano mounted on a brea
 
 | ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/72e00ab7-f9f4-49a2-a0ba-d68f68e15483) |
 |:--:|
-| <b>Leads from BBQ ligher is placed on top of the microcontroller</b>|
+| <b>Leads from the BBQ ligher is placed on top of the microcontroller</b>|
 
 
 ### Testing
-Once the Arduino Nano was running and printing to the serial monitor, I began pressing the lighter to create sparks. It faulted on the second attempt! At this time, I was quite happy that I had experienced that the microcontroller faulted so quick and effortless. That's pretty cool! After experimenting with different wire placements, the fault occurred consistently every 3rd to 5th attempt. I also encountered that sometimes the fault would cause the Arduino Nano to reboot.  
+Once the Arduino Nano was running and printing to the serial monitor, I began pressing the lighter to create sparks. It faulted on the second attempt! At this time, I was quite happy that the microcontroller faulted so quickly and effortlessly. That's pretty cool! After experimenting with different wire placements, the fault occurred consistently every 3rd to 5th attempt. I also encountered that sometimes the fault would cause the Arduino Nano to reboot.  
 
 | ![signal-2024-06-01-142450_002](https://github.com/memsecno/memsec.no/assets/13424965/b2a550a2-7159-4c7e-877e-141582b4371b) |
 |:--:|
@@ -91,25 +91,23 @@ While testing various wire placements and the repeatability of the tests, the se
 
 | ![signal-2024-06-01-142450_002](https://github.com/memsecno/memsec.no/assets/13424965/0d6c9b64-f1b2-4111-b4fa-f3bc2a5c2c62) |
 |:--:|
-| <b>Glitch occured which caused memory dump</b>|
+| <b>Glitch occured which caused a memory dump</b>|
 
-Most of the ASCII output was from a Riscure HW hacking CTF (https://github.com/Riscure/Rhme-2016). Specifically, the strings are from the binary/challange called "Casino", which I verified using Ghidra:
+Most of the ASCII output seen in the picture above was from a Riscure HW hacking CTF (https://github.com/Riscure/Rhme-2016). Specifically, the strings are from the casino.hex binary, which also can be found by analyzing it in Ghidra:
 
 | ![signal-2024-06-01-142450_002](https://github.com/memsecno/memsec.no/assets/13424965/1141bed4-eaed-47a9-9c40-4186d0546545) |
 |:--:|
-| <b>Strings found in the casino hex file using Ghidra</b>|
+| <b>Strings found in the casino.hex binary using Ghidra</b>|
 
 ### Security Implications
-This is quite interesting from a security perspective! It implies that the Arduino does not overwrite all flash memory when a new program is written. I did some research on the Arduino Nano's bootloader and found that it uses either optiboot or ATmegaBOOT [3]. Based on the configuration in the IDE, I know that mine uses ATmegaBOOT. From my research [4][5], it seems highly likely that ATmegaBOOT only erases the pages necessary for the new program data. This means that any previous program data larger than the latest program data written to flash remains persistent and can potentially be recovered.
+This is quite interesting from a security perspective! It implies that the Arduino Nano does not overwrite all flash memory when a new program is written. I did some research on the Arduino Nano's bootloader and found that it uses either optiboot or ATmegaBOOT [3]. Since my Arduino Nano works using the selection of Processor set to the "Old Bootloader" variant, I know that mine uses the ATmegaBOOT bootloader [3]. From my research [4][5], it is my understanding that ATmegaBOOT only erases the pages necessary for the new program data to be written. This means that any previous program data larger than the latest program data written to flash remains persistent and can potentially be recovered.
 
 ### Conclusion
-Trying out fault injection with the Arduino Nano and a basic BBQ lighter has been really fun. By causing electromagnetic interference near the microcontroller, I saw firsthand how even small disturbances, like sparks from the lighter, can mess with the microcontroller's normal behavior, such as skipping instructions. 
+Trying out fault injection on the ATMEGA328P with a basic BBQ lighter has been really fun. By causing electromagnetic interference near the microcontroller, I saw firsthand how even small disturbances, like sparks from the lighter, can mess with the microcontroller's normal behavior, such as skipping instructions. 
 
-One surprising thing I found was that when I uploaded new programs to the Arduino Nano, not all of the old program's data got erased. Only the parts that the new program needed were cleared out and replaced. This means that bits of old program code could still be hanging around in the microcontroller's memory, which is pretty interesting from a security standpoint.
+During my tests, I observed that ASCII characters from previous projects suddenly appeared on the serial monitor during fault injection. This occurred because when new programs are written to the Arduino Nano (e.g., write to flash memory of ATMEGA328P), not all data from the old program was erased. Only the memory pages (based on program size) required by the new program were cleared and replaced. Consequently, remnants of old program code could still reside in the microcontroller's flash memory, which is quite interesting from a security viewpoint.
 
-During my tests, I also noticed that ASCII characters from previous projects suddenly showed up in the output. It made me realize that data from earlier programs can stick around longer than expected, which is something to consider when working on embedded IoT devices.
-
-Overall, this experiment taught me a lot about how susceptible devices like the Arduino Nano are to outside interference. It also showed me the importance of being careful about how data is handled in embedded systems.
+Overall, this experiment taught me a lot about how susceptible microcontrollers like the ATMEGA328P are to EM interference. Ultimately, it is essential to consider physical attacks, such as fault injection, when securing systems as part of a holistic risk assessment.
 
 #### Sources
 [1] O'Flynn, C., & van Woudenberg, J. (2021). The hardware hacking handbook: Breaking embedded security with hardware attacks. No Starch Press. \
