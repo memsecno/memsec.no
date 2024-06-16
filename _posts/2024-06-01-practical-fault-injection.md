@@ -8,9 +8,9 @@ categories: post
 ---
 
 ### Introduction
-Lately, I've been interested in fault injection attacks, and the Hardware Hacking Handbook [1] has been incredibly valuable for learning about them. I decided to try out one of the practical examples showcased in the book, and we will take a look at that experiment in this blog post. \\ The experiment is based on that a cheap BBQ ligher can be used to create a spark including electromagnetic field in near vicinity of the microcontroller such that the field interferes with the microcontroller, causing unexpected behvior such as skipping instructions. In practice, this means that we place the BBQ ligher leads on top of the ATMEGA328P SMD package and make sparks. 
+Lately, I've been interested in fault injection attacks, and the Hardware Hacking Handbook [1] has been valuable for learning about them. I decided to try out one of the practical examples showcased in the book, and we will take a look at that experiment in this blog post. \\ The experiment is based on that a cheap BBQ ligher can be used to create a spark including electromagnetic field in near vicinity of the microcontroller such that the field interferes with the microcontroller, causing unexpected behvior such as skipping instructions. In practice, this means that we place the BBQ ligher leads on top of the ATMEGA328P SMD package and make sparks. 
 
-### Target Setup: ATMEGA328P microcontroller.
+### Target: ATMEGA328P microcontroller.
 The target is an ATMEGA 328P microcontroller in a SMD package, used by the Arduino Nano development board, which is a popular development board for educational and hobbyist purposes. To determine if a fault has been successfully induced in the microcontroller, we use a nested loop and print a count variable that should behave predictably under normal operation. If a fault occurs, the count variable may not produce the expected value, indicating that a fault has occurred.
 
 The following code [1] was uploaded to the microcontroller:
@@ -57,14 +57,14 @@ void loop() {
 
 ### Practical Fault Setup
 
-Here is a picture of my setup, featuring the Arduino Nano mounted on a breadboard, a BBQ lighter, and alligator clips to hold the lighter's leads in place. The Arduino Nano is connected to my laptop via USB without any isolator. It is crucial to keep the spark away from the 328P leads or any other connections on the Arduino, as the high voltage could damage both the Arduino and the connected laptop. Although a decoupler can be used to prevent this risk, I did not encounter any issues in my case.
+Here is a picture of my setup, featuring the Arduino Nano mounted on a breadboard, a BBQ lighter, and alligator clips to hold the lighter's leads in place. The Arduino Nano is connected to my laptop via USB without any isolator. It is crucial to keep the spark away from the ATMEGA328P leads or any other connections on the Arduino, as the high voltage could damage both the Arduino and the connected laptop. Although a decoupler can be used to prevent this risk, I did not encounter any issues in my case.
 
 | ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/ea2cfb6a-de7c-4cd7-a5e0-e841fc029c49) |
 |:--:|
 | <b>Fault Setup</b>|
 
 ### Testing
-Once the Arduino Nano was running and printing to the serial monitor, I began pressing the lighter to create sparks. It faulted on the second attempt! At this time, I was quite happy that I had verified that the microcontroller faulted. That's pretty cool! After experimenting with different wire placements, the fault occurred consistently every 3rd to 5th attempt. I also encountered that sometimes the fault would cause the Arduino Uno to reboot.  
+Once the Arduino Nano was running and printing to the serial monitor, I began pressing the lighter to create sparks. It faulted on the second attempt! At this time, I was quite happy that I had experienced that the microcontroller faulted so quick and effortless. That's pretty cool! After experimenting with different wire placements, the fault occurred consistently every 3rd to 5th attempt. I also encountered that sometimes the fault would cause the Arduino Nano to reboot.  
 See the image below:
 
 | ![signal-2024-06-01-142450_002](https://github.com/memsecno/memsec.no/assets/13424965/9f91e3ac-9979-42d8-bf25-a7fab55edefa) |
@@ -85,22 +85,21 @@ Most of the ASCII output was from a Riscure HW hacking CTF (https://github.com/R
 |:--:|
 | <b>Strings found in the casino hex file using Ghidra</b>|
 
-This is quite interesting from a security perspective! This implies that the Arduino does not overwride all flash memory when a new program is uploaded. I did some research on the Arduino Nano's bootloader and it seems that it uses either optiboot or ATmegaBOOT [2]. I know that mine uses ATmegaBOOT from the configuration in the IDE. Looking at the ATmegaBOOT bootloader we get our assumption verified [3]:
-
-
-
-
-
-I found that new programs overwrite existing memory, but only based on the size of the new program. I therefore suspect that the short code snippet used in this experiemnt only replaced a small amount of the total memory. The 
+This is quite interesting from a security perspective! It implies that the Arduino does not overwrite all flash memory when a new program is written. I did some research on the Arduino Nano's bootloader and found that it uses either optiboot or ATmegaBOOT [2]. Based on the configuration in the IDE, I know that mine uses ATmegaBOOT. From my research [3][4], it seems highly likely that ATmegaBOOT only erases the pages necessary for the new program data. This means that any previous program data larger than the latest program data written to flash remains persistent and can potentially be recovered.
 
 
 ### Conclusion
-It is interesting and knowledgeful how easy it is to start experimenting with fault injection. 
+Trying out fault injection with the Arduino Nano and a basic BBQ lighter has been really fun. By causing electromagnetic interference near the microcontroller, I saw firsthand how even small disturbances, like sparks from the lighter, can mess with the microcontroller's normal behavior, such as skipping instructions.
 
+One surprising thing I found was that when I uploaded new programs to the Arduino Nano, not all of the old program's data got erased. Only the parts that the new program needed were cleared out and replaced. This means that bits of old program code could still be hanging around in the microcontroller's memory, which is pretty interesting from a security standpoint.
+
+During my tests, I also noticed that ASCII characters from previous projects suddenly showed up in the output. It made me realize that data from earlier programs can stick around longer than expected, which is something to consider when working on embedded IoT devices.
+
+Overall, this experiment taught me a lot about how susceptible devices like the Arduino Nano are to outside interference. It also showed me the importance of being careful about how data is handled in embedded systems.
 
 #### Sources
 [1] O'Flynn, C., & van Woudenberg, J. (2021). The hardware hacking handbook: Breaking embedded security with hardware attacks. No Starch Press.
 [2] https://arduino.stackexchange.com/questions/51866/arduino-nano-atmega328p-bootloader-difference
 [3] https://github.com/arduino/ArduinoCore-avr/blob/master/bootloaders/atmega8/ATmegaBOOT.c
-
+[4] https://www.avrfreaks.net/s/topic/a5C3l000000UcMSEA0/t161252
 
