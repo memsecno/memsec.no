@@ -8,7 +8,7 @@ categories: post
 ---
 
 ### Introduction
-Lately, I've been interested in fault injection attacks, and the Hardware Hacking Handbook [1] has been valuable for learning about them. I decided to try out one of the practical examples showcased in the book, and we will take a look at that experiment in this blog post. The experiment is based on that a cheap BBQ ligher can be used to create a spark including electromagnetic field in near vicinity of the microcontroller such that the field interferes with the microcontroller, causing unexpected behvior such as skipping instructions. In practice, this means that we place the BBQ ligher leads on top of the ATMEGA328P SMD package and make sparks. 
+Lately, I've been interested in fault injection attacks, and the Hardware Hacking Handbook [1] has been valuable for learning about them. I decided to try out one of the practical examples showcased in the book, and we will take a look at that experiment in this blog post. The experiment is based on that a cheap BBQ ligher can be used to create a spark including electromagnetic field in near vicinity of the microcontroller such that the field interferes with the microcontroller, causing unexpected behavior such as skipping instructions. In practice, this means that we place the BBQ ligher leads on top of the ATMEGA328P SMD package and make sparks. 
 
 
 | ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/76730552-e2c5-43be-938b-621eac712c87) |
