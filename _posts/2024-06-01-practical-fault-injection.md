@@ -10,6 +10,12 @@ categories: post
 ### Introduction
 Lately, I've been interested in fault injection attacks, and the Hardware Hacking Handbook [1] has been valuable for learning about them. I decided to try out one of the practical examples showcased in the book, and we will take a look at that experiment in this blog post. \\ The experiment is based on that a cheap BBQ ligher can be used to create a spark including electromagnetic field in near vicinity of the microcontroller such that the field interferes with the microcontroller, causing unexpected behvior such as skipping instructions. In practice, this means that we place the BBQ ligher leads on top of the ATMEGA328P SMD package and make sparks. 
 
+
+| ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/76730552-e2c5-43be-938b-621eac712c87) |
+|:--:|
+| <b>Principle of electromagnetic fault injection, image from [2]</b>|
+
+
 ### Target: ATMEGA328P microcontroller.
 The target is an ATMEGA 328P microcontroller in a SMD package, used by the Arduino Nano development board, which is a popular development board for educational and hobbyist purposes. To determine if a fault has been successfully induced in the microcontroller, we use a nested loop and print a count variable that should behave predictably under normal operation. If a fault occurs, the count variable may not produce the expected value, indicating that a fault has occurred.
 
@@ -94,7 +100,7 @@ Most of the ASCII output was from a Riscure HW hacking CTF (https://github.com/R
 | <b>Strings found in the casino hex file using Ghidra</b>|
 
 ### Security Implications
-This is quite interesting from a security perspective! It implies that the Arduino does not overwrite all flash memory when a new program is written. I did some research on the Arduino Nano's bootloader and found that it uses either optiboot or ATmegaBOOT [2]. Based on the configuration in the IDE, I know that mine uses ATmegaBOOT. From my research [3][4], it seems highly likely that ATmegaBOOT only erases the pages necessary for the new program data. This means that any previous program data larger than the latest program data written to flash remains persistent and can potentially be recovered.
+This is quite interesting from a security perspective! It implies that the Arduino does not overwrite all flash memory when a new program is written. I did some research on the Arduino Nano's bootloader and found that it uses either optiboot or ATmegaBOOT [3]. Based on the configuration in the IDE, I know that mine uses ATmegaBOOT. From my research [4][5], it seems highly likely that ATmegaBOOT only erases the pages necessary for the new program data. This means that any previous program data larger than the latest program data written to flash remains persistent and can potentially be recovered.
 
 ### Conclusion
 Trying out fault injection with the Arduino Nano and a basic BBQ lighter has been really fun. By causing electromagnetic interference near the microcontroller, I saw firsthand how even small disturbances, like sparks from the lighter, can mess with the microcontroller's normal behavior, such as skipping instructions. 
@@ -106,8 +112,9 @@ During my tests, I also noticed that ASCII characters from previous projects sud
 Overall, this experiment taught me a lot about how susceptible devices like the Arduino Nano are to outside interference. It also showed me the importance of being careful about how data is handled in embedded systems.
 
 #### Sources
-[1] O'Flynn, C., & van Woudenberg, J. (2021). The hardware hacking handbook: Breaking embedded security with hardware attacks. No Starch Press.
-[2] https://arduino.stackexchange.com/questions/51866/arduino-nano-atmega328p-bootloader-difference
-[3] https://github.com/arduino/ArduinoCore-avr/blob/master/bootloaders/atmega8/ATmegaBOOT.c
-[4] https://www.avrfreaks.net/s/topic/a5C3l000000UcMSEA0/t161252
+[1] O'Flynn, C., & van Woudenberg, J. (2021). The hardware hacking handbook: Breaking embedded security with hardware attacks. No Starch Press. \
+[2] https://www.researchgate.net/figure/Principle-of-electromagnetic-fault-injection_fig1_341810842 \
+[3] https://arduino.stackexchange.com/questions/51866/arduino-nano-atmega328p-bootloader-difference \
+[4] https://github.com/arduino/ArduinoCore-avr/blob/master/bootloaders/atmega8/ATmegaBOOT.c \
+[5] https://www.avrfreaks.net/s/topic/a5C3l000000UcMSEA0/t161252
 
