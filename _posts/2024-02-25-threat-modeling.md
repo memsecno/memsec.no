@@ -1,5 +1,5 @@
 ---
-title: "Introduction to threat modeling"
+title: "Introduction to Threat Modeling"
 author: "Martin Svalstuen Brunæs"
 date: "2024-03-16"
 tags: ["Threat Modeling", "Security Engineering", "Security Posture"]
