@@ -1,8 +1,8 @@
 ---
-title: "EM fault injection caused memory leakage in microcontroller"
+title: "Fault injection caused memory dump in microcontroller!"
 author: "Martin Svalstuen Brunæs"
 date: "2024-06-15"
-tags: ["fault injection", "hardware attack", "memory leakage"]
+tags: ["fault injection", "electromagnetic", "hardware attack", "memory dump"]
 layout: post
 categories: post
 ---
@@ -55,24 +55,32 @@ void loop() {
 }
 ```
 
-### Practical Fault Setup
+### Test Setup
 
-Here is a picture of my setup, featuring the Arduino Nano mounted on a breadboard, a BBQ lighter, and alligator clips to hold the lighter's leads in place. The Arduino Nano is connected to my laptop via USB without any isolator. It is crucial to keep the spark away from the ATMEGA328P leads or any other connections on the Arduino, as the high voltage could damage both the Arduino and the connected laptop. Although a decoupler can be used to prevent this risk, I did not encounter any issues in my case.
+Here is a picture of my test setup, featuring the Arduino Nano mounted on a breadboard, a BBQ lighter, and alligator clips to hold the lighter's leads in place. The Arduino Nano is connected to my laptop via USB without any isolator. It is crucial to keep the spark away from the ATMEGA328P leads or any other connections on the Arduino, as the high voltage could damage both the Arduino and the connected laptop. Although a decoupler can be used to prevent this risk, I did not encounter any issues in my case.
 
-| ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/ea2cfb6a-de7c-4cd7-a5e0-e841fc029c49) |
+| ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/df73b92d-573a-4533-ad50-2f4d92800029) |
 |:--:|
-| <b>Fault Setup</b>|
+| <b>Test Setup</b>|
+
+| ![signal-2024-06-01-142351_002](https://github.com/memsecno/memsec.no/assets/13424965/72e00ab7-f9f4-49a2-a0ba-d68f68e15483) |
+|:--:|
+| <b>Leads from BBQ ligher is placed on top of the microcontroller</b>|
+
 
 ### Testing
 Once the Arduino Nano was running and printing to the serial monitor, I began pressing the lighter to create sparks. It faulted on the second attempt! At this time, I was quite happy that I had experienced that the microcontroller faulted so quick and effortless. That's pretty cool! After experimenting with different wire placements, the fault occurred consistently every 3rd to 5th attempt. I also encountered that sometimes the fault would cause the Arduino Nano to reboot.  
-See the image below:
+
+| ![signal-2024-06-01-142450_002](https://github.com/memsecno/memsec.no/assets/13424965/b2a550a2-7159-4c7e-877e-141582b4371b) |
+|:--:|
+| <b>The Spark</b>|
 
 | ![signal-2024-06-01-142450_002](https://github.com/memsecno/memsec.no/assets/13424965/9f91e3ac-9979-42d8-bf25-a7fab55edefa) |
 |:--:|
-| <b>Glitch!</b>|
+| <b>Serial Monitor: The Glitch!</b>|
 
 
-### Flash Memory Leakage
+### Flash Memory Dump
 While testing various wire placements and the repeatability of the tests, the serial monitor suddenly began printing a whole bunch of ASCII characters, which was very surprising! Even more surprisingly was that the ASCII characters were recognizable from earlier projects that I used the Arduino Nano for.
 
 | ![signal-2024-06-01-142450_002](https://github.com/memsecno/memsec.no/assets/13424965/0d6c9b64-f1b2-4111-b4fa-f3bc2a5c2c62) |
@@ -85,11 +93,11 @@ Most of the ASCII output was from a Riscure HW hacking CTF (https://github.com/R
 |:--:|
 | <b>Strings found in the casino hex file using Ghidra</b>|
 
+### Security Implications
 This is quite interesting from a security perspective! It implies that the Arduino does not overwrite all flash memory when a new program is written. I did some research on the Arduino Nano's bootloader and found that it uses either optiboot or ATmegaBOOT [2]. Based on the configuration in the IDE, I know that mine uses ATmegaBOOT. From my research [3][4], it seems highly likely that ATmegaBOOT only erases the pages necessary for the new program data. This means that any previous program data larger than the latest program data written to flash remains persistent and can potentially be recovered.
 
-
 ### Conclusion
-Trying out fault injection with the Arduino Nano and a basic BBQ lighter has been really fun. By causing electromagnetic interference near the microcontroller, I saw firsthand how even small disturbances, like sparks from the lighter, can mess with the microcontroller's normal behavior, such as skipping instructions.
+Trying out fault injection with the Arduino Nano and a basic BBQ lighter has been really fun. By causing electromagnetic interference near the microcontroller, I saw firsthand how even small disturbances, like sparks from the lighter, can mess with the microcontroller's normal behavior, such as skipping instructions. 
 
 One surprising thing I found was that when I uploaded new programs to the Arduino Nano, not all of the old program's data got erased. Only the parts that the new program needed were cleared out and replaced. This means that bits of old program code could still be hanging around in the microcontroller's memory, which is pretty interesting from a security standpoint.
 
