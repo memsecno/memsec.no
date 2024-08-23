@@ -8,6 +8,8 @@ categories: post
 # Heap Exploitation Series: Fastbin Dup Technique
 
 This is a writeup for the fastbin duplication challenge. Based on the Linux Heap Exploitation course by [Max Kemper](www.udemy.com)
+We exploit an ELF binary, popping a shell as PoC. By levering a double free vulnerability found in the glibc version 2.30 (no-tcache).
+
 
 
 #### Required Tools:
@@ -246,3 +248,66 @@ When a chunk is freed, using the Mallocs free() function, the chunk gets placed 
 ## Exploitation
 The technique relies on the lack of integrity checks when repeatedly freeing chunks of heap memory.
 The Malloc implementation utilizes chunks of different sizes when allocating heap memory to a Linux process.
+
+< libc version>
+
+### Binary buildup
+
+
+
+The binary presents us with a simple menu, that lets us request chunks through malloc, and release them again with free.
+But, the binary restricts us by onnly allowing us to request fast chunks, and forbids the 0x70 size.
+As an aid, the binary leaks the puts() function address,
+This enables us to uncover the internal memory map and relative distances to the remainder libc functions within the binary.
+
+### Attack Chain
+
+We start by requesting two 0x50-sized chunks allocated on the heap. A and B.
+We then free the chunks, routing them to the 0x50 fastbin, ready to be repurposed for new allocations.
+By freeing A, then B, then A again, we create a double free onto the 0x50 fastbin.
+Meaning Chunk A (top of the stack) points to Chunk B, by linking the FD pointed from A to B, but now the FD of B also points back to A,
+forming a circular link between the chunks.
+
+<pre>
++-----------------------------+           +-----------------------------+
+|                             |           |                             |
+|       Chunk A (Freed)       |           |       Chunk B (Freed)       |
+|                             |           |                             |
++-----------------------------+           +-----------------------------+
+|                             |           |                             |
+|    Forward Pointer (fd)     |<--------->|    Forward Pointer (fd)     |
+|  (Points to Chunk B)        |           |  (Points back to Chunk A)   |
++-----------------------------+           +-----------------------------+
+|                             |           |                             |
+|          User Data          |           |          User Data          |
+|                             |           |                             |
++-----------------------------+           +-----------------------------+
+</pre>
+
+Now we have made malloc repurpose a free chunk twice onto the fastbin.
+We take advantage of this behavior, by manipulating the chunk FD to become a fake size field.
+
+We request a new chunk through the malloc function, of the same 0x50 size. 
+We apply a set of non-printing characters /0x99/0xfe.../0xdc to form the size 0x61. 
+to the user data. Making it look like the fake size field of a heap chunk.
+
+We then allocate chunks B and A again. Which leaves the fake size field 0x61 at the top of the 0x50 fastbin stack.
+
+The fastbin has now been repurposed to a fake size filed of 0x61. And as we can see, we can continue this path to 
+rearrange metadata in the main arena structure to be intepreted in a different way.
+
+We continue with a second double-free, now targeting the 0x60 fastbin.
+Since we know the address of puts() from the memory leak. We can navigate our way through the relative address distances to
+the other libc functions that the binary relies on. 
+
+We repeat the pattern of allocating two chunks in the 0x60 fastbin, we call these J and K.
+We then free chunk J, then K, then J again, forming our second double-free.
+This time we repurpose the FD of chunk J to point to the address of main_arena + 0x20, meaning the fifth fastbin queue
+holding chunks of size 0x50, points to the third fastbin queue that holds chunks of size 0x40.
+<pre>
+
+</pre>
+
+
+## Summary
+
