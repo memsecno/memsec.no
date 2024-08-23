@@ -5,5 +5,12 @@ date: "2024-09-15"
 layout: post
 categories: post
 ---
-This is a writeup to the first challenge in the Heap Exploitation course by Max Kemper, revolved around heap exploitation techniques for the Malloc memory allocator in libc.
+This is a writeup for the fastbin dup technique. based on the Heap Exploitation course by Max Kemper, which revolves around heap exploitation techniques for the Malloc memory allocator in libc.
+
+Required Tools:
+- Pwndbg
+- Python library Pwntools
+- x86 64-bit Linux Environment
+- GNU toolchain
+
 
