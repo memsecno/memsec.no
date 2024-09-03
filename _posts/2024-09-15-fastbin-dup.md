@@ -302,11 +302,19 @@ the other libc functions that the binary relies on.
 
 We repeat the pattern of allocating two chunks in the 0x60 fastbin, we call these J and K.
 We then free chunk J, then K, then J again, forming our second double-free.
-This time we repurpose the FD of chunk J to point to the address of main_arena + 0x20, meaning the fifth fastbin queue
+This time we repurpose the FD of chunk J to point to the address of main_arena + 0x20, meaning the fifth fastbin queue.
+When we do a third malloc, the user data of the chunk in queue (holding the address of main arena + 0x20) will be interpreted as
+the next FD (available free chunk) in the queue. This works because the main arena 0x50 fast bin holds the value 0x61, and gets
+interpreted as a chunk size field.
+
+Remember that for a reallocation from a fastbin, the current chunk will either hold a cleared user data area of 0x00s,
+but if not, this is assumed to be a valid FD. The fastbin will then assume that the area still more freed chunks available in its queue.
+
 holding chunks of size 0x50, points to the third fastbin queue that holds chunks of size 0x40.
 <pre>
 
 </pre>
+
 
 
 ## Summary
