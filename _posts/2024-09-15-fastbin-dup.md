@@ -380,14 +380,14 @@ Now that we have prepared the metadata in the arena, we do a fourth allocation, 
 
 If we are able to create our own fake top chunk pointer, we can allocate memory from any arbitrary region within the memory space. Remember that this binary was built with a **glibc 2.30** dependency, meaning it includes the **2.29 Glibc** introduction of a Top Chunk Size integrity check.
 This means we need to ensure that the size of a Top Chunk is within the system memory range reserved for the process.
-![Fake Top Chunk within Arena](./images/fast_bin_dup_challenge/top_chunk_fake.png)
+![Fake Top Chunk within Arena](../images/fast_bin_dup_challenge/top_chunk_fake.png)
 
 #### Activating a fake Malloc hook
  Our target for the fake top chunk pointer, is to activate one of Mallocs hooks. These hooks are used for purposes such as implementing ones own memory allocator, or to assess performance of a binary regarding its memory allocation operations. We want to overwrite this hook, currently deactivated by holding a value of all 0x00s, and repurpose it to an address of our own.When activated the hook will be called by the malloc function, we want to make the hook point to a valid gadget within the program. 
 
 **Gadgets** are a set of assembly instructions of a specific ISA internal to the target binary. A gadget conducts some specific operation, and by chaining these together can be used to maliciously alter the behavior of an executing binary. A 1-gadget can be considered the last step of these, usually where the operation involves invoking a shell.
 
-![One-Gagdets](./images/fast_bin_dup_challenge/one_gadget.png)
+![One-Gagdets](../images/fast_bin_dup_challenge/one_gadget.png)
 
 Now to be able to overwrite the `__malloc_hook` by creating a fake Top Chunk, we need to find a location close to the hook that can resemble a valid Top Chunk size field. For this we make use of the `find_fake_fast` command within **pwndbg**. Remember that neither the x86 ISA nor the glibc Malloc implementation enforces instruction alignment, explaining why the address found by `find_fake_fast` is a valid address. This would for instance not be valid on most RISC architectures (like ARM) requiring instruction alignment.
 
@@ -395,7 +395,7 @@ Now to be able to overwrite the `__malloc_hook` by creating a fake Top Chunk, we
 For the identification of a valid gadget, we use the 1-gadget tool referenced in the course, proposing a set of different gadgets 
 found within the binary or one the **shared object** (.so) files linked to it.
 
-![Previous chunks existing on Stack](./images/fast_bin_dup_challenge/stack_argv.png)
+![Previous chunks existing on Stack](../images/fast_bin_dup_challenge/stack_argv.png)
 
 #### Invoking a shell
 We use the last candidate proposed by 1-gadget. Note that one of the requirements is to control the `argv` input arguments of `sh`, within the specified stack offset of RSP + 0x50 and onwards. For this binary, this is taken care of by the fact that initial chunks allocated through the program, A, B, J and K are all existing along the stack. This means we can control what goes on to the stack offsets needed by this 1-gadget.
@@ -427,12 +427,12 @@ malloc(0x18, b'')
 For `sh` we apply the `-s` argument to indicate `stdin`input, which should make data succeeding RSP + 0x50 irrelevant (Remember x86 calling convention pushes args onto 
 stack in reverse). 
 
-![Shell Access](./images/fast_bin_dup_challenge/shell_pop.png)
+![Shell Access](../images/fast_bin_dup_challenge/shell_pop.png)
 
 #### Root privileges through `suid`
 The challenge mentions this as a good example of how the `suid` access property can be misused. For those unaware, `suid` is a user access setting for the Linux file system. Applied to an executable, making it run with the effective `uid` belonging to the owner of the file instead of the initiating user. This is often seen in conjunction with scripts that require root privileges, where a non-admin user can call a script and execute it with higher privileges than the user would have otherwise.
 
-![Root Shell Access](./images/fast_bin_dup_challenge/root_shell_pop.png)
+![Root Shell Access](../images/fast_bin_dup_challenge/root_shell_pop.png)
 
 This binary when run with this setting facilitates a way an attacker can use the double free vulnerability to gain root on a device. All thanks to this access control property. To conduct this, we will change the `-s`argument of `sh` to `-p`to avoid resetting the effective `uid` to the calling user. 
 
