@@ -1,7 +1,7 @@
 ---
 title: "Heap Exploitation : Fast Bin Dup Technique"
 author: "Bjørn-Ivar Bekkevold"
-date: "2024-09-15"
+date: "2024-09-08"
 layout: post
 categories: post
 ---
