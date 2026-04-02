@@ -5,7 +5,6 @@ date: "2024-09-08"
 layout: post
 categories: post
 ---
-# Heap Exploitation: Fastbin Dup Technique
 
 This writeup explores the fastbin duplication challenge, based on the Linux Heap Exploitation course by [Max Kemper](https://www.udemy.com/user/max-kamper/). We exploit an x86 64-bit ELF binary, leveraging a **Double-Free vulnerability** found in **glibc 2.30 (without tcache)**, invoking a shell as a proof-of-concept for arbitrary code execution.
 
